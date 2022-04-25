@@ -2,19 +2,44 @@ const menuBtn = document.querySelector('.menu-btn');
 const hamburger = document.querySelector('.menu-btn__burger');
 const nav = document.querySelector('.nav');
 const menuNav = document.querySelector('.menu-nav');
+const navItems = document.querySelectorAll('.menu-nav__item');
 
 let showMenu = false;
 menuBtn.addEventListener('click', toggleMenu);
+
+/**
+ * Adding a class by catching a dom event
+ */
+const addClassOpen = () => {
+  hamburger.classList.add('open');
+  nav.classList.add('open');
+  menuNav.classList.add('open');
+  showMenu = true;
+
+  navItems.forEach(item => item.classList.add('open'));
+  debugger;
+}
+
+/**
+ * Deleting a class by catching a dom event
+ */
+const removeClassOpen = () => {
+  hamburger.classList.remove('open');
+  nav.classList.remove('open');
+  menuNav.classList.remove('open');
+  showMenu = false;
+
+  navItems.forEach(item => item.classList.remove('open'));
+}
+
+/**
+ * Listening hamburger menu toggle
+ * @returns void
+ */
 function toggleMenu() {
-    if (!showMenu) {
-        hamburger.classList.add('open');
-        nav.classList.add('open');
-        menuNav.classList.add('open');
-        showMenu = true;
-        return
-    }
-    hamburger.classList.remove('open');
-    nav.classList.remove('open');
-    menuNav.classList.remove('open');
-    showMenu = false;
+  if (!showMenu) {
+    addClassOpen();
+    return;
+  }
+  removeClassOpen();
 }

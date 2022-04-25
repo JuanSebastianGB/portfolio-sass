@@ -1,0 +1,62 @@
+@import 'normalize';
+@import 'box_sizing';
+@import 'config';
+@import 'fonts';
+@import 'home';
+@import 'menu';
+
+body {
+    background-color: set-text-color($primary-color);
+    color: white;
+    height: 100vh;
+    font-family: $font-open;
+    line-height: 1;
+}
+
+@for $i from 1 through 3 {
+    h#{$i} {
+        font-weight: 400;
+    }
+}
+
+a {
+    color: set-text-color($primary-color);
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    padding: 1rem;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+
+    .social-icons {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+
+        a {
+            @include transition-ease;
+            padding: 0.4rem;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
+
+footer {
+    position: fixed;
+    font-size: 1rem;
+    bottom: 0.4rem;
+    right: 1rem;
+    text-align: right;
+    padding: 1rem;
+    color: set-text-color($primary-color);
+}
